@@ -8,7 +8,7 @@ const CONTACT = {
   whatsapp: '92308886012', 
   location: 'Multan, Pakistan',
   github: 'https://github.com/Hamzakhan9221',
-  linkedin: 'https://www.linkedin.com/in/your-profile',
+  linkedin: 'https://www.linkedin.com/in/hamza-khan-60240640b/',
 }
 
 
