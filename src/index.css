@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+  color: #fff;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(185, 35, 225, 0.25), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(218, 124, 37, 0.2), transparent 40%),
+    #0f1020;
+  background-attachment: fixed;
+}
+
+#root {
+  width: 100%;
+}

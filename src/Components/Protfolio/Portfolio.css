@@ -1,0 +1,292 @@
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 70px;
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  padding: 80px 0;
+  scroll-margin-top: 90px;
+}
+
+/* Scroll par aane wali animation */
+.portfolio-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.portfolio-reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Title */
+.portfolio-title {
+  text-align: center;
+}
+.portfolio-title h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700;
+  color: #fff;
+}
+.portfolio-line {
+  display: block;
+  width: 140px;
+  height: 6px;
+  margin: 10px auto 0;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #da7c25, #b923e1, #da7c25);
+  background-size: 200% auto;
+  animation: portfolioShift 3s linear infinite;
+}
+
+/* Cards grid */
+.portfolio-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 40px;
+  width: 100%;
+}
+
+/* Screenshot on top (full width), text below */
+.portfolio-format {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.portfolio-format.show {
+  opacity: 1;
+  animation: portfolioIn 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+/* Chamak jo guzarti hai */
+.portfolio-format::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transform: skewX(-20deg);
+}
+
+.portfolio-format:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: transparent;
+  box-shadow: 0 18px 45px rgba(185, 35, 225, 0.35);
+}
+.portfolio-format:hover::after {
+  left: 130%;
+  transition: left 0.9s ease;
+}
+
+.portfolio-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  padding: 28px 36px 36px;
+}
+
+.portfolio-format h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.portfolio-format h2 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #b923e1, #ff6fa8, #da7c25);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: all 0.3s ease;
+}
+.portfolio-format:hover h2 {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  color: #fff;
+}
+
+.portfolio-format p {
+  font-size: 16px;
+  line-height: 1.55;
+  color: #e5e7eb;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Screenshot (optional) */
+.portfolio-img {
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+}
+.portfolio-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.6s ease;
+}
+.portfolio-format:hover .portfolio-img img {
+  transform: scale(1.08);
+}
+
+/* Empty box shown until you add a screenshot */
+.portfolio-img-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(185, 35, 225, 0.22), rgba(218, 124, 37, 0.16));
+  color: #e5e7eb;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.portfolio-img-empty span {
+  font-size: 40px;
+}
+.portfolio-img-empty small {
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+.portfolio-format:hover .portfolio-img-empty {
+  background: linear-gradient(135deg, rgba(185, 35, 225, 0.32), rgba(218, 124, 37, 0.24));
+}
+
+/* Tags */
+.portfolio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.portfolio-tags li {
+  padding: 4px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  font-size: 13px;
+  color: #f1e8ff;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.portfolio-format:hover .portfolio-tags li {
+  background: rgba(255, 111, 168, 0.22);
+  border-color: rgba(255, 111, 168, 0.7);
+}
+
+/* Links (View Live / GitHub) */
+.portfolio-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 32px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+.portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+}
+.portfolio-arrow {
+  font-style: normal;
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+.portfolio-format:hover .portfolio-arrow {
+  animation: portfolioArrow 0.9s ease-in-out infinite;
+}
+
+@keyframes portfolioIn {
+  from { opacity: 0; transform: translateY(50px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes portfolioShift {
+  to { background-position: 200% center; }
+}
+@keyframes portfolioArrow {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(8px); }
+}
+
+/* ===== Rotating multi-color border line (mouse andar ho tab) ===== */
+@property --portfolio-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+.portfolio-ring {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 4px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--portfolio-angle),
+    #b923e1,
+    #ff6fa8,
+    #f5a623,
+    #ff6fa8,
+    #b923e1
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  filter: drop-shadow(0 0 8px rgba(255, 111, 168, 0.55));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.portfolio-format:hover .portfolio-ring {
+  opacity: 1;
+  animation: portfolioRingSpin 3s linear infinite;
+}
+@keyframes portfolioRingSpin {
+  to { --portfolio-angle: 360deg; }
+}
+
+/* Tablet: one card per row */
+@media (max-width: 1000px) {
+  .portfolio-container { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .portfolio { gap: 50px; padding: 60px 0; }
+  .portfolio-container { grid-template-columns: 1fr; grid-auto-rows: auto; }
+  .portfolio-img { height: 180px; }
+  .portfolio-body { padding: 24px 24px 30px; }
+  .portfolio-format h2 { font-size: 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio *, .portfolio-line { animation: none !important; }
+  .portfolio-reveal, .portfolio-format { transition: none; opacity: 1; transform: none; }
+}

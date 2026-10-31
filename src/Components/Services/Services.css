@@ -1,0 +1,216 @@
+.services {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 70px;
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  padding: 80px 0;
+  scroll-margin-top: 90px;
+}
+
+/* Scroll par aane wali animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Title */
+.services-title {
+  text-align: center;
+}
+.services-title h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700;
+  color: #fff;
+}
+.services-line {
+  display: block;
+  width: 140px;
+  height: 6px;
+  margin: 10px auto 0;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #da7c25, #b923e1, #da7c25);
+  background-size: 200% auto;
+  animation: servicesShift 3s linear infinite;
+}
+
+/* Cards grid */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  width: 100%;
+}
+
+.services-format {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 40px 36px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 0;
+  opacity: 0;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.services-format.show {
+  opacity: 1;
+  animation: servicesIn 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+ 
+
+
+/* Chamak jo guzarti hai */
+.services-format::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transform: skewX(-20deg);
+}
+
+.services-format:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: transparent;
+  box-shadow: 0 18px 45px rgba(185, 35, 225, 0.35);
+}
+.services-format:hover::before {
+  opacity: 1;
+}
+.services-format:hover::after {
+  left: 130%;
+  transition: left 0.9s ease;
+}
+
+.services-format h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.services-format h2 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #b923e1, #ff6fa8, #da7c25);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: all 0.3s ease;
+}
+.services-format:hover h2 {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  color: #fff;
+}
+
+.services-format p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #e5e7eb;
+}
+
+/* Read More */
+.services-readmore {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 14px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+}
+.services-arrow {
+  font-style: normal;
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+.services-format:hover .services-arrow {
+  animation: servicesArrow 0.9s ease-in-out infinite;
+}
+
+@keyframes servicesIn {
+  from { opacity: 0; transform: translateY(50px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes servicesShift {
+  to { background-position: 200% center; }
+}
+@keyframes servicesArrow {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(8px); }
+}
+
+/* ===== Rotating multi-color border line (mouse andar ho tab) ===== */
+@property --ring-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+.services-ring {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 4px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--ring-angle),
+    #b923e1,
+    #ff6fa8,
+    #f5a623,
+    #ff6fa8,
+    #b923e1
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  filter: drop-shadow(0 0 8px rgba(255, 111, 168, 0.55));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.services-format:hover .services-ring {
+  opacity: 1;
+  animation: ringSpin 3s linear infinite;
+}
+@keyframes ringSpin {
+  to { --ring-angle: 360deg; }
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+  .services-container { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .services { gap: 50px; padding: 60px 0; }
+  .services-container { grid-template-columns: 1fr; }
+  .services-format { padding: 30px 24px; }
+  .services-format h2 { font-size: 28px; }
+  .services-format p { font-size: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services *, .services-line { animation: none !important; }
+  .reveal, .services-format { transition: none; opacity: 1; transform: none; }
+}
