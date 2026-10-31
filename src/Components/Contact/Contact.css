@@ -9,7 +9,7 @@
   scroll-margin-top: 90px;
 }
 
-/* Scroll par aane wali animation */
+/* Scroll animation */
 .contact-reveal {
   opacity: 0;
   transform: translateY(50px);
@@ -79,7 +79,7 @@
   animation: contactIn 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
 }
 
-/* Chamak jo guzarti hai */
+/* Box Effect gliter line */
 .contact-card::after,
 .contact-form::after {
   content: '';

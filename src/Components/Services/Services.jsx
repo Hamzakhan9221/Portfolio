@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './Services.css'
 
-// Yahan apni services badal sakte hain
+
 const services = [
   {
     no: '01',
@@ -26,7 +26,7 @@ const services = [
   
 ]
 
-// Element screen par aaye to true (sirf ek baar)
+
 const useInView = (threshold = 0.15) => {
   const ref = useRef(null)
   const [inView, setInView] = useState(false)

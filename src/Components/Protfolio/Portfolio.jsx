@@ -5,15 +5,6 @@ import balaajImg from '../../assets/Balaaj.png'
 import movieappImg from '../../assets/movieapp.png'
 import ZonauraImg from '../../assets/Zonaura.png'
 
-// Screenshots: put your images in src/assets, then import them here, e.g.
-// import movieImg from '../assets/movie.png'
-// import balaajImg from '../assets/balaaj.png'
-// import agencyImg from '../assets/agency.png'
-// import zonauraImg from '../assets/zonaura.png'
-
-// Edit your projects here
-// image: use the imported image (e.g. image: movieImg)
-// While image is '' the card shows an empty "Add screenshot" box
 const projects = [
   {
     no: '01',
@@ -38,8 +29,7 @@ const projects = [
     title: 'Agency.AI',
     desc: 'A modern landing page for an AI agency, showing its services, working process and a contact section.',
     tags: ['React', 'Responsive', 'CSS'],
-    image: AgencyImg ,
-    
+    image: AgencyImg,
     live: 'https://agency-ai1.netlify.app/',
     github: '',
   },
@@ -54,7 +44,6 @@ const projects = [
   },
 ]
 
-// Becomes true once the element is on screen (only one time)
 const useInView = (threshold = 0.15) => {
   const ref = useRef(null)
   const [inView, setInView] = useState(false)

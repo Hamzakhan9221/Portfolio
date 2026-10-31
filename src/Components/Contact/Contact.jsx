@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './Contact.css'
 
-// ✏️ Apni details yahan badlo
+
 const CONTACT = {
   email: 'm.hamzakhan200404@gmail.com',
   phone: '+92 306 8886012',

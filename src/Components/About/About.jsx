@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import './About.css'
 import HAMZA_profile from '../../assets/HAMZA_profile.png'
 
-// Yahan apni skills aur numbers badal sakte hain
+// skills and their levels
 const skills = [
   { name: 'HTML & CSS', level: 70 },
   { name: 'React JS', level: 50 },
@@ -39,7 +39,7 @@ const useInView = (threshold = 0.2) => {
   return [ref, inView]
 }
 
-// 0 se number tak ginti
+
 const Counter = ({ end, start }) => {
   const [n, setN] = useState(0)
 

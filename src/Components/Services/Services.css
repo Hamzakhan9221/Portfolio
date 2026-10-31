@@ -71,7 +71,7 @@
  
 
 
-/* Chamak jo guzarti hai */
+/* gliter effect on box */
 .services-format::after {
   content: '';
   position: absolute;
